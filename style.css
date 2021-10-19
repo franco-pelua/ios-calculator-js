@@ -1,0 +1,144 @@
+:root {
+    --digit-keys: #505050;
+    --operator-keys: #FF9500;
+    --background-color: #1C1C1C;
+    --function-keys: #D4D4D2;
+}
+
+@font-face {
+    font-family: San Francisco;
+    src: url(./assets/SFNSText-Regular.otf) format('otf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: San Francisco, sans-serif;
+}
+
+body { 
+    background-color: var(--background-color);
+    color: #ffffff;
+    height: 100%;
+    width: 100%;
+}
+
+/* mobile first */
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    min-width: 290px;
+}
+
+.calculator .screen {
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    padding: 0 0 15px 0;
+    font-size: 5.5rem;
+    width: 100%;
+    height: 150px;
+}
+
+.calculator .keyboard {
+    width: 100%;
+    height: 350px;
+}
+
+/* applying background colors */
+
+/* first row */
+.keyboard .row:first-child .sub-col:not(:last-child) {
+    background-color: var(--function-keys);
+    color: var(--background-color);
+}
+
+.keyboard .row:first-child .sub-col:last-child {
+    background-color: var(--operator-keys);
+    color: #ffffff;
+}
+
+/* second row, third row, fourth row and fifth row */
+.keyboard .row:nth-child(2) .sub-col:not(:last-child), 
+.keyboard .row:nth-child(3) .sub-col:not(:last-child), 
+.keyboard .row:nth-child(4) .sub-col:not(:last-child), 
+.keyboard .row:nth-child(5) .sub-col:not(:last-child) {
+    background-color: var(--digit-keys);
+    color: #ffffff;
+}
+
+.keyboard .row:nth-child(2) .sub-col:last-child, 
+.keyboard .row:nth-child(3) .sub-col:last-child, 
+.keyboard .row:nth-child(4) .sub-col:last-child, 
+.keyboard .row:nth-child(5) .sub-col:last-child {
+    background-color: var(--operator-keys);
+    color: #ffffff;
+}
+
+/* utilities */
+
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.col { 
+    display: flex;
+    position: relative;
+    width: 100%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+    height: 100vh;
+}
+
+@media only screen and (min-device-width: 992px) {
+    .col { 
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 21%;
+    height: 86%;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 21%;
+    flex: 0 0 21%;
+    max-width: 21%;
+    border-radius: 50%;
+}
+
+.row:last-child .sub-col:first-child {
+    display: flex;
+    justify-content: start;
+    padding-left: 25px;
+    width: 47%;
+    -ms-flex: 0 0 47%;
+    flex: 0 0 47%;
+    max-width: 47%;
+    border-radius: 100px 100px 100px 100px;
+}
+
+.keyboard .row {
+    justify-content: space-between;
+    height: 20%;
+}
+
