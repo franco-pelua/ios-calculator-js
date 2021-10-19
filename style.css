@@ -79,6 +79,10 @@ body {
     color: #ffffff;
 }
 
+.selected_operation {
+    border: 1px solid red;
+}
+
 /* utilities */
 
 .row {
