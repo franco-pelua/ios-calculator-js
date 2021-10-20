@@ -80,7 +80,7 @@ body {
 }
 
 .selected_operation {
-    border: 1px solid red;
+    border: 3px solid red;
 }
 
 /* utilities */
@@ -104,7 +104,7 @@ body {
     height: 100vh;
 }
 
-@media only screen and (min-device-width: 992px) {
+@media only screen and (min-width: 992px) {
     .col { 
         -ms-flex: 0 0 50%;
         flex: 0 0 50%;
