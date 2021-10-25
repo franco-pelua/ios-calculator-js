@@ -38,7 +38,6 @@ function onButtonPress (e) {
 
 function AssignNumber(e) {
     
-    console.log(evaluation.length)
     if(evaluation.length <= 1) {
         first_number = first_number == 0 
             ? parseInt(e.target.getAttribute("data-value"))
@@ -117,7 +116,6 @@ function Render() {
 
     let last_operator_button =  document.querySelector('.selected_operation');
 
-    // Render in screen the latest number updated.
     screen.textContent = result;
 
     second_number != 0
@@ -129,9 +127,9 @@ function Render() {
     new_operator_button[0] ? new_operator_button[0].classList.add('selected_operation') : null;
 }
 
-// function debug() {
-//     console.log("first_number: " + first_number);
-//     console.log("second_number: " + second_number);
-//     console.log("current_operator: " + current_operator);
-//     console.log("end of log")
-// }
+function debug() {
+    // console.log("first_number: " + first_number);
+    // console.log("second_number: " + second_number);
+    // console.log("current_operator: " + current_operator);
+    // console.log("end of log")
+}
