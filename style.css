@@ -2,7 +2,7 @@
     --digit-keys: #505050;
     --operator-keys: #FF9500;
     --background-color: #1C1C1C;
-    --function-keys: #D4D4D2;
+    --function-keys: #a2a2a2;
 }
 
 @font-face {
@@ -79,10 +79,34 @@ body {
     color: #ffffff;
 }
 
-.selected_operation {
-    border: 3px solid red;
+.selected_operation[data-value='clear'], 
+.selected_operation[data-value='%'], 
+.selected_operation[data-value='+/-'] {
+    animation: background-anim-fn .8s ease-out;
 }
 
+.selected_operation[data-value='='] {
+    animation: background-anim-equals .8s ease-out;
+}
+
+/* Select every operator button except clear, %, +/- and = */
+.selected_operation[data-button-type='operator']:not(.selected_operation[data-value='clear']):not(.selected_operation[data-value='%']):not(.selected_operation[data-value='+/-']):not(.selected_operation[data-value='=']) {
+    background-color: #d4d4d2;
+    color: var(--background-color);   
+    transition: background-color, color .8s ease-out;
+}
+
+@keyframes background-anim-fn { 
+    0% { background-color: var(--function-keys); }
+    50% { background-color: #fff;  }
+    100% { background-color: var(--function-keys); }
+}
+
+@keyframes background-anim-equals {
+    0% { background-color: var(--operator-keys); }
+    50% { background-color: #fff;  }
+    100% { background-color: var(--operator-keys); }
+}
 /* utilities */
 
 .row {
@@ -128,6 +152,7 @@ body {
     flex: 0 0 21%;
     max-width: 21%;
     border-radius: 50%;
+    transition: background-color .8s ease-out;
 }
 
 .row:last-child .sub-col:first-child {
@@ -139,6 +164,7 @@ body {
     flex: 0 0 47%;
     max-width: 47%;
     border-radius: 100px 100px 100px 100px;
+    transition: background-color .8s ease-out;
 }
 
 .keyboard .row {
@@ -146,3 +172,10 @@ body {
     height: 20%;
 }
 
+/* responsive settings */
+
+@media only screen and (max-width: 992px) {
+    .col:first-child {
+        order: 2;
+    }
+}

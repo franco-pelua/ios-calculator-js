@@ -10,6 +10,9 @@
 </head>
 <body>
     <div class="row">
+        <div class="col">
+            <h1>iOS-like Calculator</h1>
+        </div>
         <div class="col flex-center">
             <div class="calculator">
                 <div class="screen">
@@ -17,7 +20,7 @@
                 </div>
                 <div class="keyboard">
                     <div class="row">
-                        <div class="sub-col" data-button-type="clear" id="clear_button">AC</div>
+                        <div class="sub-col" data-button-type="operator" data-value="clear" id="clear_button">AC</div>
                         <div class="sub-col" data-button-type="operator" data-value="+/-">+/-</div>
                         <div class="sub-col" data-button-type="operator" data-value="%">%</div>
                         <div class="sub-col" data-button-type="operator" data-value="/">÷</div>
@@ -42,14 +45,11 @@
                     </div>
                     <div class="row">
                         <div class="sub-col" data-button-type="digit" data-value="0">0</div>
-                        <div class="sub-col" data-button-type="digit">,</div>
-                        <div class="sub-col" data-button-type="equals">=</div>
+                        <div class="sub-col" data-button-type="digit" data-value=".">,</div>
+                        <div class="sub-col" data-button-type="operator" data-value="=">=</div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <h1>iOS-like Calculator</h1>
         </div>
     </div>
 </body>
