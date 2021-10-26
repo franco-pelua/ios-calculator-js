@@ -68,12 +68,14 @@ function AssignOperation(e) {
 
 function Operate() { 
     if(current_operator == "%" && evaluation.length) {
+        if(typeof evaluation[evaluation.length - 1] != 'number') evaluation.pop();
         result = evaluation[evaluation.length - 1] / 100;
         evaluation.splice(evaluation.length - 1, 1, result);
         return;
     }
 
     if(current_operator == "+/-" && evaluation.length) {
+        if(typeof evaluation[evaluation.length - 1] != 'number') evaluation.pop();
         result = evaluation[evaluation.length - 1] * -1;
         evaluation.splice(evaluation.length - 1, 1, result);
         return;
