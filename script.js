@@ -9,7 +9,6 @@ const keyboard = document.querySelector(".keyboard");
 /*
     TODO: Handle styling when there appear bigger numbers
     TODO: Remove selected_operation class when another button is pressed
-    TODO: Handle a way to introduce decimal numbers
 */
 
 keyboard.addEventListener('click', function(e) {
@@ -34,8 +33,8 @@ function AssignNumber(e) {
 
     if(evaluation.length <= 1) {
         first_number = first_number == 0 
-            ? parseInt(e.target.getAttribute("data-value"))
-            : parseInt(first_number + e.target.getAttribute("data-value"))
+            ? e.target.getAttribute("data-value")
+            : first_number + e.target.getAttribute("data-value")
 
         if(evaluation.length == 1) evaluation.shift();
         evaluation.push(first_number)
@@ -45,8 +44,8 @@ function AssignNumber(e) {
 
     if (evaluation.length >= 2) {
         second_number = second_number == 0
-            ? parseInt(e.target.getAttribute("data-value"))
-            : parseInt(second_number + e.target.getAttribute("data-value"));
+            ? e.target.getAttribute("data-value")
+            : second_number + e.target.getAttribute("data-value");
 
         if(evaluation.length == 3) evaluation.pop();
         evaluation.push(second_number);
@@ -68,16 +67,15 @@ function AssignOperation(e) {
 
 function Operate() { 
     if(current_operator == "%" && evaluation.length) {
-        if(typeof evaluation[evaluation.length - 1] != 'number') evaluation.pop();
-        result = evaluation[evaluation.length - 1] / 100;
-        evaluation.splice(evaluation.length - 1, 1, result);
+        let number = parseInt(evaluation[evaluation.length - 1])
+        result =  number / 100;
+        evaluation.splice(evaluation.length - 1, 1, result.toString());
         return;
     }
 
     if(current_operator == "+/-" && evaluation.length) {
-        if(typeof evaluation[evaluation.length - 1] != 'number') evaluation.pop();
         result = evaluation[evaluation.length - 1] * -1;
-        evaluation.splice(evaluation.length - 1, 1, result);
+        evaluation.splice(evaluation.length - 1, 1, result.toString());
         return;
     }
 
@@ -92,8 +90,8 @@ function Operate() {
     
         if(evaluation.length == 3) {
             second_number = 0;
-            evaluation = [first_number]
-            result = first_number;
+            evaluation = [first_number.toString()]
+            result = first_number.toString();
             return;
         }
 
@@ -101,7 +99,7 @@ function Operate() {
 
     if(evaluation.length == 3) {
         result = eval(evaluation.join().replace(/,/g, ""))
-        first_number = result;
+        first_number = result.toString();
         second_number = 0;
         evaluation = [first_number]
     }
