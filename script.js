@@ -31,7 +31,7 @@ function onButtonPress (e) {
 }
 
 function AssignNumber(e) {
-    
+
     if(evaluation.length <= 1) {
         first_number = first_number == 0 
             ? parseInt(e.target.getAttribute("data-value"))
@@ -101,7 +101,6 @@ function Operate() {
 
     if(evaluation.length == 3) {
         result = eval(evaluation.join().replace(/,/g, ""))
-        console.log(result)
         first_number = result;
         second_number = 0;
         evaluation = [first_number]
@@ -131,6 +130,7 @@ function Render() {
         ? clear_button.textContent = 'AC'
         : clear_button.textContent = 'C'
 
+    
 }
 
 function debug() {

@@ -40,12 +40,13 @@ body {
     align-items: flex-end;
     padding: 0 0 15px 0;
     font-size: 5.5rem;
-    width: 100%;
+    width: 290px;
     height: 150px;
+    overflow-x: hidden;
 }
 
 .calculator .keyboard {
-    width: 100%;
+    width: 290px;
     height: 350px;
 }
 
