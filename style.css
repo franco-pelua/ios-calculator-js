@@ -5,17 +5,12 @@
     --function-keys: #a2a2a2;
 }
 
-@font-face {
-    font-family: San Francisco;
-    src: url(./assets/SFNSText-Regular.otf) format('otf');
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    font-family: San Francisco, sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 body { 
@@ -25,6 +20,14 @@ body {
     width: 100%;
 }
 
+a {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #ffffff;
+}
+
 /* mobile first */
 
 .calculator {
@@ -32,6 +35,21 @@ body {
     flex-direction: column;
     min-height: 500px;
     min-width: 290px;
+    font-size: 1.3rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem 0 3rem;
+}
+
+.main-content header {
+    padding-bottom: 1rem;
+}
+
+.main-content main {
+    padding: 1rem 0 1rem;
 }
 
 .calculator .screen {
