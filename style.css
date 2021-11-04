@@ -93,7 +93,7 @@ body {
 /* Select every operator button except clear, %, +/- and = */
 .selected_operation[data-button-type='operator']:not(.selected_operation[data-value='clear']):not(.selected_operation[data-value='%']):not(.selected_operation[data-value='+/-']):not(.selected_operation[data-value='=']) {
     background-color: #d4d4d2;
-    color: var(--background-color);   
+    color: var(--operator-keys);   
     transition: background-color, color .8s ease-out;
 }
 

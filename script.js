@@ -1,15 +1,10 @@
-let first_number = 0;
-let second_number = 0;
-let result = 0;
+let first_number = "0";
+let second_number = "0";
+let result = "0";
 let current_operator;
 let evaluation = [];
 const screen = document.querySelector(".screen");
 const keyboard = document.querySelector(".keyboard");
-
-/*
-    TODO: Handle styling when there appear bigger numbers
-    TODO: Remove selected_operation class when another button is pressed
-*/
 
 keyboard.addEventListener('click', function(e) {
     e.stopImmediatePropagation()
@@ -26,13 +21,13 @@ function onButtonPress (e) {
             break;
     }
 
-    Render();
+    Render(e);
 }
 
 function AssignNumber(e) {
 
     if(evaluation.length <= 1) {
-        first_number = first_number == 0 
+        first_number = first_number == "0" 
             ? e.target.getAttribute("data-value")
             : first_number + e.target.getAttribute("data-value")
 
@@ -43,7 +38,7 @@ function AssignNumber(e) {
     }
 
     if (evaluation.length >= 2) {
-        second_number = second_number == 0
+        second_number = second_number == "0"
             ? e.target.getAttribute("data-value")
             : second_number + e.target.getAttribute("data-value");
 
@@ -68,28 +63,28 @@ function AssignOperation(e) {
 function Operate() { 
     if(current_operator == "%" && evaluation.length) {
         let number = parseInt(evaluation[evaluation.length - 1])
-        result =  number / 100;
-        evaluation.splice(evaluation.length - 1, 1, result.toString());
+        result =  (number / 100).toString();
+        evaluation.splice(evaluation.length - 1, 1, result);
         return;
     }
 
     if(current_operator == "+/-" && evaluation.length) {
-        result = evaluation[evaluation.length - 1] * -1;
-        evaluation.splice(evaluation.length - 1, 1, result.toString());
+        result = (evaluation[evaluation.length - 1] * -1).toString();
+        evaluation.splice(evaluation.length - 1, 1, result);
         return;
     }
 
     if(current_operator == "clear") {
         
         if(evaluation.length <= 2) {
-            first_number = 0;
+            first_number = "0";
             evaluation = [];
-            result = 0;
+            result = "0";
             return;
         }
     
         if(evaluation.length == 3) {
-            second_number = 0;
+            second_number = "0";
             evaluation = [first_number.toString()]
             result = first_number.toString();
             return;
@@ -98,42 +93,45 @@ function Operate() {
     }
 
     if(evaluation.length == 3) {
-        result = eval(evaluation.join().replace(/,/g, ""))
-        first_number = result.toString();
-        second_number = 0;
+        result = (eval(evaluation.join().replace(/,/g, ""))).toString();
+        first_number = result;
+        second_number = "0";
         evaluation = [first_number]
     }
 }
 
-function Render() {
-    // select clear button
+function Render(e) {
     const clear_button = document.querySelector('div[data-value="clear"]');
 
-    // select operators buttons
-    let new_operator_button = Array.from(document.querySelectorAll('div[data-button-type="operator"]'))
-        .filter(button => button.getAttribute("data-value") == current_operator)[0];
+    let new_operator_button = e.target;
 
     let last_operator_button = document.querySelector('.selected_operation');
 
-    // change style of operators
     last_operator_button ? last_operator_button.classList.remove('selected_operation') : null;
     new_operator_button ? new_operator_button.classList.add('selected_operation') : null;
 
+    // change screen's font-size
+    switch(result.toString().length) {
+        case 7:
+            screen.style.fontSize = "4.7rem"
+            break;
+        case 8:
+            screen.style.fontSize = "4.1rem"
+            break;
+        case 9: 
+            screen.style.fontSize = "3.65rem"
+            break
+    }
 
-    // render last number in screen
-    screen.textContent = result;
+    if(result.toString().length > 9) {
+        screen.textContent = parseFloat(result).toPrecision(3);
+    } else {
+        screen.textContent = result;
+    }
 
-    // change clear button content
-    evaluation.length == 0
+    evaluation.length == "0"
         ? clear_button.textContent = 'AC'
         : clear_button.textContent = 'C'
 
     
-}
-
-function debug() {
-    // console.log("first_number: " + first_number);
-    // console.log("second_number: " + second_number);
-    // console.log("current_operator: " + current_operator);
-    // console.log("end of log")
 }
