@@ -20,15 +20,28 @@ body {
     width: 100%;
 }
 
-a {
+a, a:visited {
     color: #ffffff;
 }
 
-a:visited {
-    color: #ffffff;
+li {
+    list-style: none;
+}
+
+span {
+    font-weight: bold;
+}
+
+hr {
+    margin: 0;
+    align-self: stretch;
 }
 
 /* mobile first */
+
+.col:first-child {
+    order: 2;
+}
 
 .calculator {
     display: flex;
@@ -44,13 +57,16 @@ a:visited {
     padding: 0 3rem 0 3rem;
 }
 
-.main-content header {
-    padding-bottom: 1rem;
+.main-content main, .main-content section {
+    padding: 1rem 0 1rem;
+    width: 100%;
 }
 
-.main-content main {
-    padding: 1rem 0 1rem;
+.main-content header, .main-content section h2 {
+    padding-bottom: 1rem;
+    width: 100%;
 }
+
 
 .calculator .screen {
     display: flex;
@@ -193,8 +209,16 @@ a:visited {
 
 /* responsive settings */
 
-@media only screen and (max-width: 992px) {
+@media only screen and (min-width: 992px) {
     .col:first-child {
-        order: 2;
+        order: 0;
+    }
+
+    .main-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        max-width: 350px;
     }
 }
