@@ -222,3 +222,33 @@ hr {
         max-width: 350px;
     }
 }
+
+@media only screen and (min-width: 1500px) {
+    .main-content {
+        font-size: 1.4rem;
+        max-width: 450px
+    }
+
+    .calculator {
+        min-height: calc(500px / .7);
+        min-width: calc(290px / .7);
+        font-size: 1.7rem;
+    }
+
+    .calculator .screen {
+        display: flex;
+        justify-content: end;
+        align-items: flex-end;
+        padding: 0 0 15px 0;
+        font-size: 7rem;
+        width: calc(290px / .7);
+        height: calc(150px / .7);
+        overflow-x: hidden;
+    }
+    
+    .calculator .keyboard {
+        width: calc(290px / .7);
+        height: calc(350px / .7);
+    }
+
+}
