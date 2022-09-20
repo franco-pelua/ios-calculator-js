@@ -11,4 +11,4 @@ https://ios-calculatorjs.vercel.app/
 
 ## Authors
 
-- [@erekkles](https://www.github.com/erekkles)
+- [@franco-pelua](https://www.github.com/franco-pelua)
